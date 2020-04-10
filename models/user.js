@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         password: DataTypes.STRING,
+        organization: DataTypes.STRING
     }, {
         sequelize,
         validate: {
@@ -38,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         hooks: {
             beforeCreate(User, options) {
                 User.password = encryptPassword(User.password)
+                User.organization = 'hacktiv8'
             }
         },
         modelName: 'User'
